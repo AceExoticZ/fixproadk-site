@@ -1,0 +1,74 @@
+<!-- contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact FixProADK</title>
+  <meta name="description" content="Contact FixProADK for expert mail-in tech repair support and inquiries." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1 class="logo">FixPro<span>ADK</span></h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Contact Us</h2>
+    <p>Have questions or ready to start your repair? Send us a message below.</p>
+
+    <form id="contact-form" novalidate>
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" required minlength="2" maxlength="50" />
+
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message *</label>
+      <textarea id="message" name="message" rows="5" required minlength="10" maxlength="1000"></textarea>
+
+      <button type="submit" class="btn-primary">Send Message</button>
+      <p id="form-status" role="alert" aria-live="assertive"></p>
+    </form>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 FixProADK. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        status.textContent = 'Please fill out all required fields correctly.';
+        status.style.color = 'var(--error)';
+        return;
+      }
+
+      // Simulate sending email — replace with backend API call later
+      status.textContent = 'Sending message...';
+      status.style.color = 'var(--primary)';
+
+      setTimeout(() => {
+        form.reset();
+        status.textContent = 'Thank you for contacting FixProADK! We will reply soon.';
+        status.style.color = 'var(--success)';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
